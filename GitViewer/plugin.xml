@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+   <extension
+         point="org.eclipse.ui.views">
+      <category
+            name="%category.name"
+            id="GitViewer">
+      </category>
+      <view
+            name="%view.name"
+            icon="icons/sample.gif"
+            category="GitViewer"
+            class="gitviewer.views.GitViewer"
+            id="gitviewer.views.GitViewer">
+      </view>
+   </extension>
+   <extension
+         point="org.eclipse.ui.perspectiveExtensions">
+      <perspectiveExtension
+            targetID="org.eclipse.jdt.ui.JavaPerspective">
+         <view
+               ratio="0.5"
+               relative="org.eclipse.ui.views.ProblemView"
+               relationship="right"
+               id="gitviewer.views.GitViewer">
+         </view>
+      </perspectiveExtension>
+   </extension>
+   <extension
+         point="org.eclipse.help.contexts">
+      <contexts
+            file="contexts.xml">
+      </contexts>
+   </extension>
+   <extension
+         point="org.eclipse.ui.commands">
+      <category
+            id="GitViewer.commands.category"
+            name="Sample Category">
+      </category>
+      <command
+            categoryId="GitViewer.commands.category"
+            id="GitViewer.commands.sampleCommand"
+            name="Sample Command">
+            <state
+         				class="org.eclipse.ui.handlers.RegistryToggleState:false"
+         				id="org.eclipse.ui.commands.toggleState">
+   					</state>
+      </command>
+   </extension>
+   <extension
+         point="org.eclipse.ui.handlers">
+      <handler
+            class="gitviewer.handlers.EmailEnabler"
+            commandId="GitViewer.commands.sampleCommand">
+      </handler>
+   </extension>
+   <extension
+         point="org.eclipse.ui.bindings">
+      <key
+            commandId="GitViewer.commands.sampleCommand"
+            contextId="org.eclipse.ui.contexts.window"
+            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+            sequence="M1+6">
+      </key>
+   </extension>
+   <extension
+         point="org.eclipse.ui.menus">
+      <menuContribution
+            locationURI="menu:org.eclipse.ui.main.menu?after=additions">
+         <menu
+               id="GitViewer.menus.sampleMenu"
+               label="Git Email Enabler"
+               mnemonic="M">
+            <command
+                  commandId="GitViewer.commands.sampleCommand"
+                  id="GitViewer.menus.sampleCommand"
+                  style="toggle">
+                  
+            </command>
+         </menu>
+      </menuContribution>
+      <menuContribution
+            locationURI="toolbar:org.eclipse.ui.main.toolbar?after=additions">
+         <toolbar
+               id="GitViewer.toolbars.sampleToolbar">
+            <command
+                  commandId="GitViewer.commands.sampleCommand"
+                  icon="icons/sample.gif"
+                  id="GitViewer.toolbars.sampleCommand"
+                  tooltip="Say hello world">
+            </command>
+         </toolbar>
+      </menuContribution>
+   </extension>
+
+</plugin>

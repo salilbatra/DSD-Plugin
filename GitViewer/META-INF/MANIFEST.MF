@@ -1,0 +1,16 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: %Bundle-Name
+Bundle-SymbolicName: GitViewer;singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Bundle-Activator: gitviewer.Activator
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ org.eclipse.jgit;bundle-version="4.0.3",
+ org.eclipse.core.resources;bundle-version="3.10.1"
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-ActivationPolicy: lazy
+Export-Package: gitviewer,
+ gitviewer.views
+Bundle-ClassPath: .,
+ importedlibs/java-mail-1.4.4.jar
